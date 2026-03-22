@@ -9,10 +9,14 @@
 @use "dependencies";
 
 /**
- * Import layouts
- * It's a best practice to use a different partial for each page
+ * Import abstracts (Variables i Funcions)
  */
+@use "variables"; // <--- FALTA AQUESTA LÍNIA!
+@use "abstracts/functions";
 
+/**
+ * Import layouts
+ */
 @use "layouts/home";
 
 /**

@@ -1,60 +1,540 @@
-@use "../variables";
+@use "../abstracts/functions" as functions;
+@use '../variables' as variables;
 
-* {
-  box-sizing: border-box;
+:root {
+  --primary-color: #{variables.$color-primary};
+  --secondary-color: #{variables.$color-secondary};
+  --accent-color: #{variables.$color-accent};
+  --white-color: #{variables.$color-white};
+  --recomendations-color: #{variables.$color-recomendations};
 }
 
+// Estils globals
 body {
+  font-family: variables.$font-main;
+  background-color: variables.$color-light; // Crema suau per a tot el fons
+  color: variables.$color-dark;
+  margin: 0;
+  line-height: 1.6;
+}
+
+// Bloc: Header
+.header {
+  position: sticky;
+  top: 0;
+  background-color: variables.$color-white;
+  z-index: 1000;
+  border-bottom: 3px solid variables.$color-primary;
+  box-shadow: 0 4px 20px rgba(variables.$color-dark, 0.08);
+  padding: 0 functions.espai(1.5);
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+  &__container {
+    display: flex; // <--- Activa el mode fila
+    flex-direction: row; // <--- Força la fila
+    justify-content: space-between;
+    align-items: center; // <--- Alinea el logo i el menú verticalment
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    color: variables.$color-secondary;
+    margin: 0; // <--- Important: treu el marge per defecte
+    padding: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    white-space: nowrap; // <--- Evita que el text es trenqui en dues línies
+
+    &--highlight {
+      color: variables.$color-primary;
+      font-weight: 900;
+
+      &::after {
+        color: variables.$color-accent;
+      }
+    }
+  }
+}
+
+// 2. Millora de la Navegació
+.nav {
+  &__toggle {
+    position: fixed; // Es queda clavat a sobre del header blanc
+    top: 7px; // Centrat verticalment (Header 60px - Botó ~45px)
+    right: 1rem;
+    z-index: 1100; // Per sobre del header (1000)
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px 10px;
+
+    .nav__icon {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: variables.$color-primary;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: inherit;
+        transition: all 0.3s ease;
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        bottom: -8px;
+      }
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 60px; // Just sota el header
+    right: -100%; // Amagat a la dreta
+    height: fit-content;
+    background-color: variables.$color-secondary;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1050;
+    box-shadow: -5px 5px 15px rgb(0 0 0 / 20%);
+    border-radius: 0 0 0 0.8rem;
+
+    &--open {
+      right: 0; // Entra el desplegable
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 1.2rem 1.5rem;
+    color: variables.$color-light;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    // border-bottom: 1px solid clarificar(variables.$color-secondary, 10);;
+
+    &:hover, &--active {
+      background-color: clarificar(variables.$color-primary, 20);
+      padding-left: 1.8rem;
+      color: variables.$color-accent;
+    }
+  }
+
+  // Estat ACTIU de l'hamburguesa (Quan es clica)
+  &--active {
+    .nav__icon {
+      background: transparent !important;
+
+      &::before {
+        transform: rotate(45deg);
+        top: 0;
+        background: variables.$color-primary !important;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+        background: variables.$color-primary !important;
+      }
+    }
+  }
+}
+
+main {
+  padding: functions.espai(1);
+}
+
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; // Efecte parallax
+  display: flex;
+  align-items: center;
+
+  &__overlay {
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(variables.$color-dark, 0.8) 10%,
+      rgba(variables.$color-dark, 0.2) 100%,
+      transparent 100%
+    );
+    display: flex;
+    align-items: center;
+    padding: functions.espai(2);
+    border-radius: 1rem;
+  }
+
+  &__content {
+    max-width: 700px;
+    color: variables.$color-secondary;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+
+  &__subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: variables.$color-light;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  &__headline {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    line-height: 1.1;
+    font-weight: 900;
+    margin: 0;
+
+    span {
+      color: variables.$color-primary;
+    }
+  }
+
+  &__divider {
+    width: 80px;
+    height: 4px;
+    background-color: variables.$color-primary;
+    margin: 2rem 0;
+  }
+
+  &__text {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    font-style: italic;
+    opacity: 0.9;
+    max-width: 550px;
+    border-left: 2px solid rgba(variables.$color-light, 0.3);
+    padding-left: 1.5rem;
+  }
+}
+
+// Aplica-ho a totes les seccions que tenen un ID de navegació
+section[id] {
+  scroll-margin-top: 80px; // 65px del header + 15px de marge de cortesia
+}
+
+// Bloc: POI Card
+.poi-card {
+  background-color: variables.$color-white;
+  border: 1px solid clarificar(variables.$color-secondary, 20);
+  border-left: 6px solid variables.$color-primary; // Accent verd oliva
+  margin-bottom: functions.espai(2);
+  border-radius: 0.8rem;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin: 0;
-  padding: 2rem;
-  font-family: variables.$font-family-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: variables.$uoc-bg;
-  color: variables.$uoc-corporate;
-}
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-.uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: #fff;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+  &:hover {
+    box-shadow: 0 10px 20px clarificar(variables.$color-dark, 10);
+  }
 
-.uoc-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
-  height: auto;
+  &__content {
+    padding: 0 functions.espai(1.5);
+  }
 
-  @media (min-width: variables.$mqMinWidth) {
-    max-width: none;
+  &__title {
+    color: variables.$color-primary;
+    margin-bottom: functions.espai(1);
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &--double {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      height: 100%;
+      background-color: variables.$color-light;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    cursor: pointer;
   }
 }
 
-.uoc-title {
-  font-family: variables.$font-family-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: variables.$uoc-corporate;
+.oil-divider {
+  background-color: variables.$color-primary;
+  color: variables.$color-white;
+  text-align: center;
+  border-radius: 0.8rem;
+  padding: 0.5rem 2rem;
 
-  @media (min-width: variables.$mqMinWidth) {
-    font-size: 36px;
+  &__title {
+    text-align: center;
+    color: variables.$color-accent;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__text {
+    margin: 0 auto 2rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+
+    i {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: variables.$color-white;
+    }
   }
 }
 
-.uoc-footer {
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
+.altres-pobles {
+  background-color: variables.$color-white;
+  border-radius: 0.8rem;
+  padding: 0.5rem 2rem;
+
+  &__title {
+    text-align: center;
+    color: variables.$color-primary;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  // Agrupem el contenidor de les targetes mini
+  .pobles-destacats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  // Agrupem l'element de cada poble dins del bloc principal
+  .poble-mini {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &__icon {
+      font-size: 1.8rem;
+      color: variables.$color-secondary;
+      background: variables.$color-white;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 5%);
+      transition: all 0.3s ease; // Millor posar la transició aquí que al hover
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+
+      strong {
+        color: variables.$color-dark;
+        font-size: 1.1rem;
+      }
+
+      span {
+        font-size: 0.85rem;
+        color: variables.$color-secondary;
+      }
+    }
+
+    // El hover queda ara més integrat
+    &:hover {
+      .poble-mini__icon {
+        color: variables.$color-white;
+        background-color: variables.$color-primary;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.map-section {
+  padding: functions.espai(1) 0; // Donem més espai vertical a la secció
+  background-color: variables.$color-light;
+
+  &__title {
+    color: variables.$color-dark;
+    margin-bottom: functions.espai(2);
+    text-align: center;
+    font-size: 1.8rem;
+
+    i {
+      margin-right: 10px;
+      color: variables.$color-dark;// Icona en color terra
+    }
+  }
+
+  &__canvas {
+    display: block;
+    width: 100%;
+    height: 450px; // Alçada obligatòria per Leaflet
+    min-height: 450px;
+    background-color: variables.$color-white;
+    border-radius: 1rem;
+    border: 2px solid rgba(variables.$color-secondary, 0.3);
+    box-shadow: 0 10px 30px rgba(variables.$color-dark, 0.1);
+    z-index: 1; // Per sota de possibles menús desplegables
+
+    // Evitem que el mapa es desbordi en mòbils petits
+    max-width: 100%;
+  }
+}
+
+// Estils per a les icones de FontAwesome que inserim via JS
+.custom-leaflet-icon {
+  background: none !important;
+  border: none !important;
+
+  // L'estil del cercle blanc que hem posat al JS es pot reforçar aquí si cal
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  background-color: variables.$color-secondary; // El color fosc del menú
+  color: variables.$color-light;
+  margin-top: functions.espai(4);
+  border-top: 4px solid variables.$color-primary; // El verd de les Borges/Arbeca
   text-align: center;
+
+  &__container {
+    // El teu mixin o classe container ja hauria de tenir el max-width i el margin auto
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__bottom {
+    p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      opacity: 0.8; // Perquè no brilli tant com el nom de l'autor
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__author {
+    font-weight: 400;
+
+    span {
+      color: variables.$color-primary; // El teu nom en verd destacat
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// --- RESPONSIVE ---
+@media (min-width: variables.$mq-tablet) {
+  .header {
+    &__container {
+      display: flex;
+      justify-content: space-between; // Separa Logo de Menú
+      align-items: center; // Alineació vertical perfecta
+      height: 100%; // Ocupa tota l'alçada del header (70px)
+      margin: 0 auto;
+    }
+  }
+
+  .nav {
+    position: fixed; // Es clava a sobre del header sticky
+    top: 0;
+    right: 2rem; // Alineat a la dreta
+    height: 60px; // Mateixa alçada que el header
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+
+    &__toggle {
+      display: none; // Fora hamburguesa en web
+    }
+
+    &__list {
+      position: static; // Torna al flux horitzontal
+      width: auto;
+      height: auto;
+      background: transparent;
+      flex-direction: row; // Una sola línia
+      box-shadow: none;
+      visibility: visible;
+      opacity: 1;
+      gap: 0.5rem;
+    }
+
+    &__link {
+      color: variables.$color-secondary; // Text fosc pel header blanc
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+
+      &:hover {
+        background: transparent;
+        padding-left: 1rem; // Resetejem el moviment lateral
+        box-shadow: inset 0 -2px 0 variables.$color-primary;
+        color: variables.$color-primary;
+      }
+    }
+  }
+
+  .poi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: functions.espai(2.5);
+    padding: functions.espai(1);
+  }
+
+  .poi-card__image-container {
+    height: 300px;
+  }
 }

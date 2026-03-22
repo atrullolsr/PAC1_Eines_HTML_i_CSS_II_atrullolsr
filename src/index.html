@@ -1,36 +1,259 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="ca">
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss" />
-    <!-- do not remove this line! -->
-    <title>UOC Boilerplate</title>
-  </head>
-  <body>
-    <div class="uoc-container">
-      <picture>
-        <source
-          srcset="./assets/images/logo.png?as=webp&width=350"
-          type="image/webp"
-        />
-        <img
-          src="./assets/images/logo.png?width=350"
-          alt="Universitat Oberta de Catalunya"
-          class="uoc-logo"
-        />
-      </picture>
-      <h1 class="uoc-title">Hello, UOC!</h1>
-      <p>
-        This is a starter template for the Advanced HTML and CSS Tools courses
-        from the Master's Program in Multimedia Applications and the Master's
-        Program in Web App and Website Development at the Universitat Oberta de
-        Catalunya.
-      </p>
-    </div>
-    <include src="./views/footer.html"></include>
-    <script type="module" src="./assets/scripts/main.js"></script>
-    <!-- do not remove this line! -->
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Garrigues: Les Borges Blanques - Arbeca</title>
+</head>
+
+<body class="site-container">
+
+  <include src="./views/header.html"></include>
+
+  <nav class="nav">
+    <button class="nav__toggle" aria-label="Obrir menú">
+      <span class="nav__icon"></span>
+    </button>
+
+    <ul class="nav__list">
+      <li class="nav__item"><a href="#borges" class="nav__link">Les Borges</a></li>
+      <li class="nav__item"><a href="#patrimoni" class="nav__link">El Cor de la Ruta</a></li>
+      <li class="nav__item"><a href="#arbeca" class="nav__link">Arbeca</a></li>
+      <li class="nav__item"><a href="#mapa" class="nav__link">Mapa</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="hero__overlay">
+        <div class="container">
+          <div class="hero__content">
+            <span class="hero__subtitle">Benvinguts a les Garrigues</span>
+            <h2 class="hero__headline">
+              Ruta de la <span class="hero__highlight">Pedra Seca</span> <br>
+              i l'<span>Oli</span>
+            </h2>
+            <div class="hero__divider"></div>
+            <p class="hero__text">
+              Un viatge entre l'enigmàtica fortalesa dels Vilars i la capital de l'oli.
+              Descobreix un paisatge esculpit pel temps, l'olivera i la saviesa de la terra.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="borges" class="town-section">
+      <div class="container">
+        <h2 class="town-section__name"><i class="fa-solid fa-seedling"></i>Les Borges Blanques</h2>
+        <p class="town-section__intro">
+          Considerada la capital mundial de l'oli d'oliva verge extra, les Borges Blanques és el motor econòmic i cultural de les Garrigues.
+          Passejar pels seus carrers és submergir-se en una tradició mil·lenària on cada racó respira l'aroma de l'oliva premsada.
+        </p>
+
+        <div class="poi-grid">
+          <article class="poi-card">
+            <div class="poi-card__image-container poi-card__image-container--double">
+              <img src="./assets/images/pois/esglesia_asumpta_borges.jpg" alt="Església de l'Assumpta"
+                class="poi-card__image glightbox">
+              <img src="./assets/images/pois/esglesia_asumpta_borges_interior.jpg" alt="Interior de Església de l'Assumpta"
+                class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-church poi-card__icon"></i>Església de l'Assumpta</h3>
+              <p class="poi-card__text">Aquesta majestuosa construcció neoclàssica del segle XVIII destaca pel seu imponent campanar vuitavat, visible des de
+              tota la plana d'Urgell. L'interior, d'una gran amplitud, allotja l'esperit de la comunitat que ha crescut al voltant de
+              la plaça porticada, un dels centres neuràlgics de la vida social borgenca.</p>
+            </div>
+          </article>
+          <article class="poi-card">
+            <div class="poi-card__image-container poi-card__image-container--double">
+              <img src="./assets/images/pois/terrall-basses.jpg" alt="Basses del Terrall"
+                class="poi-card__image glightbox">
+              <img src="./assets/images/pois/terrall-premsa.jpg" alt="Premsa d'oli antiga"
+                class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-tree poi-card__icon"></i>El Terrall</h3>
+              <p class="poi-card__text">Més que un parc, el Terrall és el pulmó de la ciutat. Les seves basses, antigament dipòsits d'aigua per al bestiar, avui
+              formen un jardí botànic on conviuen aus i vegetació autòctona. Aquí s'exposen premses d'oli històriques, autèntiques
+              escultures industrials que recorden com es transformava el fruit de l'olivera abans de la modernització.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cultura-oli" class="oil-divider">
+      <div class="container">
+        <div class="oil-divider__content">
+          <h2 class="oil-divider__title">L'Ànima de la Terra</h2>
+          <p class="oil-divider__text">
+            Les Garrigues no s'entenen sense l'olivera **Arbequina**.
+            Més de 2.000 anys de tradició que bateguen en cada gota d'oli verge extra.
+          </p>
+          <div class="oil-divider__icon">
+            <span><i class="fa-solid fa-leaf"></i> Arbequina</span>
+            <span><i class="fa-solid fa-award"></i> DO Garrigues</span>
+            <span><i class="fa-solid fa-bottle-droplet"></i> Or Líquid</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="patrimoni" class="town-section town-section--alt">
+      <div class="container">
+        <h2 class="town-section__name"><i class="fa-solid fa-monument"></i> El Cor de la Ruta</h2>
+        <p class="town-section__intro">
+          Entre l'Albi, Vinaixa i la Floresta s'estén un paisatge modelat per la necessitat i l'enginy. La pedra seca,
+          aixecada sense cap tipus de ciment, és el testimoni silenciós dels pagesos que van domesticar aquestes terres de
+          secà.
+        </p>
+
+        <div class="poi-grid poi-grid--triple">
+          <article class="poi-card">
+            <div class="poi-card__image-container">
+              <img src="./assets/images/pois/paisatge_oliveres.jpg" alt="Paisatge d'oliveres centenàries"
+                class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title">
+                <i class="fa-solid fa-seedling poi-card__icon"></i> El Mar d'Oliveres
+              </h3>
+              <p class="poi-card__text">
+                El camí entre aquests pobles està dibuixat per milers d'oliveres arbequines. És un paisatge viu on les terrasses
+                de pedra seca permeten cultivar en zones de pendent, creant un mosaic de verds i grisos que canvia amb la
+                llum del dia, especialment màgic durant la posta de sol.
+              </p>
+            </div>
+          </article>
+
+          <article class="poi-card">
+            <div class="poi-card__image-container">
+              <img src="./assets/images/cabanes/cal_mansio.jpg" alt="Cabana de Cal Mansió" class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-archway poi-card__icon"></i>L'Albi</h3>
+              <p class="poi-card__text">Un poble que conserva el seu traçat medieval sota l'ombra de les restes del seu castell. La Cabana de Cal Mansió n'és
+              l'exemple perfecte de l'arquitectura popular: una estructura circular massissa que servia de refugi durant les dures
+              jornades de collita.</p>
+            </div>
+          </article>
+
+          <article class="poi-card">
+            <div class="poi-card__image-container">
+              <img src="./assets/images/cabanes/cabana_del_pau_miquel.jpg" alt="Cabana del Pau Miquel" class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-mound poi-card__icon"></i>Vinaixa</h3>
+              <p class="poi-card__text">Coneguda per la seva pedra de qualitat, Vinaixa amaga joies com la Cabana del Pau Miquel. Aquestes construccions mostren
+              la perfecció de la tècnica de la falsa cúpula, on les pedres es van tancant fins a coronar un sostre totalment
+              impermeable i resistent.</p>
+            </div>
+          </article>
+
+          <article class="poi-card">
+            <div class="poi-card__image-container">
+              <img src="./assets/images/pois/castell_floresta.jpg" alt="Castell-Palau de La Floresta" class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-chess-rook poi-card__icon"></i>La Floresta</h3>
+              <p class="poi-card__text">Aquest petit municipi sorprèn pel seu Castell-Palau, una joia que barreja el romànic, el gòtic i el renaixement. Els
+              seus sostres de fusta policromada són dels pocs que es conserven a Catalunya, mostrant una riquesa artística inesperada
+              enmig del paisatge rural.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="arbeca" class="town-section">
+      <div class="container">
+        <h2 class="town-section__name"><i class="fa-solid fa-gopuram"></i>Arbeca</h2>
+        <p class="town-section__intro">
+          Arbeca és el punt on la història antiga es troba amb el llegat dels Ducs de Cardona. Un poble d'origen ibèric que ha
+          sabut mantenir la seva identitat a través dels segles.
+        </p>
+
+        <div class="poi-grid">
+          <article class="poi-card">
+            <div class="poi-card__image-container">
+              <img src="./assets/images/pois/vilars_arbeca.jpg" alt="Vilars d’Arbeca" class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-monument poi-card__icon"></i>Vilars d’Arbeca</h3>
+              <p class="poi-card__text">
+                Aquesta fortalesa és única al món ibèric. Construïda fa 2.800 anys, destaca per la seva complexa defensa: una muralla
+                amb dotze torres i un fossat inundable. El camp de pedres plantades (chevaux-de-frise) impedia l'atac de la
+                cavalleria, un sistema defensiu que no es torna a veure a Europa fins molts segles després.
+              </p>
+            </div>
+          </article>
+          <article class="poi-card">
+            <div class="poi-card__image-container poi-card__image-container--double">
+              <img src="./assets/images/pois/castell_arbeca.jpg" alt="Castell d'Arbeca"
+                class="poi-card__image glightbox">
+              <img src="./assets/images/pois/castell_arbeca_2.jpg" alt="Interior del Castell d'Arbeca"
+                class="poi-card__image glightbox">
+            </div>
+            <div class="poi-card__content">
+              <h3 class="poi-card__title"><i class="fa-solid fa-building-columns poi-card__icon"></i>El Castell Palau</h3>
+              <p class="poi-card__text">
+                Tot i que avui en dia només en resten fragments, el castell d'Arbeca va ser un dels més sumptuosos de Catalunya.
+                Segons diu la llegenda, el duc de Cardona va prometre un ral d'or per cada olivera plantada, donant lloc a l'expansió
+                de la varietat que avui coneixem com a Arbequina.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="altres-pobles">
+      <div class="container">
+        <h3 class="altres-pobles__title">Altres tresors de la comarca</h3>
+
+        <div class="pobles-destacats">
+          <article class="poble-mini">
+            <i class="fa-solid fa-palette poble-mini__icon"></i>
+            <div class="poble-mini__info">
+              <strong>El Cogul</strong>
+              <span>Pintures rupestres (UNESCO)</span>
+            </div>
+          </article>
+
+          <article class="poble-mini">
+            <i class="fa-solid fa-droplet poble-mini__icon"></i>
+            <div class="poble-mini__info">
+              <strong>La Granadella</strong>
+              <span>La Catedral de l'Oli</span>
+            </div>
+          </article>
+
+          <article class="poble-mini">
+            <i class="fa-solid fa-chess-rook poble-mini__icon"></i>
+            <div class="poble-mini__info">
+              <strong>L'Espluga Calba</strong>
+              <span>Castell de l'Orde de Malta</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="mapa" class="map-section">
+      <div class="container">
+        <h2 class="map-section__title"><i class="fa-solid fa-map-location-dot"></i>Mapa del recorregut</h2>
+        <div id="map" class="map-section__canvas"></div>
+      </div>
+    </section>
+  </main>
+
+  <include src="./views/footer.html"></include>
+
+  <script type="module" src="./assets/scripts/main.js"></script>
+</body>
+
 </html>

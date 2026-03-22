@@ -1,12 +1,17 @@
 @use "sass:color";
 
-$font-family-sans-serif:
-  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$font-family-serif: "Georgia", "Times New Roman", serif;
+// Colors Principals (Inspirats en l'olivera i la terra)
+$color-primary: #6b8e23; // Oliva fosc (per a botons, icones i títols)
+$color-secondary: #a89a70; // Color pedra/sorra (per a fons de seccions o bordes)
+$color-accent: #f1c40f; // Terra cuita (per a detalls importants o hover)
 
-$uoc-corporate: #000078;
-$uoc-masterbrand: #73edff;
-$uoc-bg: color.scale($uoc-masterbrand, $lightness: 70%);
+// Colors Neutres
+$color-dark: #2b2d42; // Blau molt fosc/Gris (per al text principal)
+$color-light: #fdfcf0; // Crema molt suau (en lloc de blanc pur, per donar calidesa)
+$color-white: #fff;
+$color-recomendations: #673ab7; // Color per a recomanacions, suggeriments o elements destacats
 
-$mqMinWidth: 420px;
+// Tipografia
+$font-main: 'Segoe UI', roboto, helvetica, arial, sans-serif;
+$mq-tablet: 768px;
+$mq-desktop: 1024px;
