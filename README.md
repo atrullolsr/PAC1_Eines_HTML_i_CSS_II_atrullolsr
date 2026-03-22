@@ -1,69 +1,71 @@
-# UOC Boilerplate
+# PAC 1: Eines HTML i CSS II - Ruta de les Garrigues
 
-UOC Boilerplate is a starter template for the HTML and CSS Tools courses from the [Master's Program in Multimedia Applications](https://estudis.uoc.edu/ca/masters-universitaris/aplicacions-multimedia/presentacio) and the [Master's Program in Web App and Website Development](https://estudis.uoc.edu/ca/masters-universitaris/desenvolupament-llocs-aplicacions-web/presentacio) at the [Universitat Oberta de Catalunya](https://www.uoc.edu). It aims to provide a basic, modern frontend web development starter pack based on Parcel and including a Sass compiler, an ES6 transpiler, minifiers, an image transformer, and development tools.
+Aquest projecte consisteix en el disseny i desenvolupament d'una web "one-page" responsive sobre una ruta turística per la comarca de les Garrigues, centrada en la cultura de l'oli i el patrimoni de la pedra seca.
 
-This is the 3.x version of UOC Boilerplate, available since the UOC 2020-2 semester.
+Realitzat per a l'assignatura d'**Eines HTML i CSS II** del Grau de Disseny i Desenvolupament de la UOC.
 
-## Requirements
+---
 
-[Node.js](http://nodejs.org/) >= 18.x
+## 🔗 Enllaços del Projecte
+- **URL de producció (Netlify):** [https://ruta-garrigues-albert.netlify.app](https://ruta-garrigues-albert.netlify.app)
+- **Repositori a GitHub:** [https://github.com/atrullolsr/pac1-eines-html-css-2](https://github.com/atrullolsr/pac1-eines-html-css-2)
 
-## Getting started
+---
 
-Clone this repository with `git clone`, or download a .zip file using the top right green button.
+## 🛠️ Especificacions Tècniques
 
-Using the Terminal, navigate to the project folder and run `npm install`.
+### 🎨 Arquitectura i Metodologia CSS
+S'ha utilitzat la metodologia **BEM (Block Element Modifier)** per a l'organització de les classes CSS. Aquesta tria permet:
+- Evitar conflictes de especificitat.
+- Crear components modulars i reutilitzables.
+- Mantenir un codi SCSS llegible i fàcil d'escalar.
 
-## Features
+### 🚀 Preprocessat i Eines
+- **Sass (SCSS):** Ús intensiu de variables per a la paleta de colors i tipografies, nesting, mixins per a media queries i arquitectura de fitxers parcials.
+- **Stylelint:** Configuració de linter segons els estàndards de la UOC per garantir la qualitat del codi i el compliment de les bones pràctiques.
+- **Parcel:** Bundler utilitzat per a la compilació de recursos, optimització d'imatges i gestió del servidor de desenvolupament.
 
-- Uses [Parcel v2](https://parceljs.org) module bundler.
-- NPM scripts for fast development and production build (see Commands below).
+### 📦 Llibreries i Recursos
+- **Leaflet & Leaflet-routing-machine:** Implementació del mapa interactiu amb càlcul de ruta i marcadors personalitzats de punts d'interès (POIs).
+- **GLightbox:** Galeria d'imatges responsive per a la visualització del patrimoni de la pedra seca.
+- **FontAwesome:** Iconografia detallada per a la navegació i els elements del mapa.
 
-### Stylesheets
+---
 
-- [Sass/SCSS](https://sass-lang.com) to CSS compilation (`@parcel/transformer-sass`).
-- Transpilation of modern CSS synthax to support older bvrowsers, based on `browserslist`, including vendor prefixing and synthax lowering, with [PostCSS](https://postcss.org/) (`@parcel/transformer-postcss`).
-- Minification and optimization of CSS files on production builds with [`lightningcss`](https://github.com/parcel-bundler/lightningcss) (`@parcel/optimizer-css`).
+## 📂 Estructura del Projecte
 
-### HTML
+/
+├── src/
+│   ├── assets/
+│   │   ├── images/     # Imatges optimitzades de la ruta
+│   │   ├── scripts/    # Lògica de Leaflet i GLightbox (main.js)
+│   │   └── styles/     # Arquitectura SCSS (main.scss + parcials)
+│   ├── views/          # Inclusions de header i footer
+│   └── index.html      # Estructura principal del lloc
+├── .stylelintrc.json   # Configuració del linter
+├── package.json        # Dependències i scripts de build
+└── README.md           # Documentació del projecte
+⚙️ Instruccions de Desenvolupament
+Per posar en marxa el projecte localment, cal tenir instal·lat Node.js i seguir aquests passos:
 
-- Minification and optimization of CSS files on production builds [`htmlnano`](https://github.com/posthtml/htmlnano) (`@parcel/optimizer-htmlnano`).
-- [PostHTML](https://github.com/posthtml/posthtml) (`@parcel/transformer-posthtml`) features:
-  - Include partial HTML files with [`posthtml-include`](https://github.com/posthtml/posthtml-include).
+Instal·lar dependències:
 
-### Scripts
+Bash
+npm install
+Executar en mode desenvolupament:
 
-- Transpilation of modern JavaScript synthax to support older browsers, based on `browserslist`, with with [Babel](https://babeljs.io/) (`@parcel/transformer-babel`).
-- Minification and optimization of JS code with [SWC](https://swc.rs/) (`@parcel/optimizer-swc`).
+Bash
+npm run dev
+La web estarà disponible a http://localhost:8123
 
-### Images
+Generar el paquet de producció:
 
-- Image transformation with [`sharp`](https://sharp.pixelplumbing.com/) ([`@parcel/transformer-image`](https://parceljs.org/recipes/image/)).
+Bash
+npm run build
+El codi optimitzat es generarà a la carpeta /dist.
 
-### Development
+Autor: Albert Trullols
 
-- Development server launch and live reloading on file changes.
-- Friendly error reporting.
+Curs: 2025-2026
 
-## How to use this boilerplate
-
-Content lives inside the `src/` folder. If you do not want to change the configuration or are unsure about what you are doing, do not edit files outside the `src/` folder.
-
-Always run the following commands during the development stage and for production builds. Please note that it is expected that all projects built with this boilerplate are compiled using `npm run build` before they are published.
-
-### Commands
-
-| Command         | Description                                                                                                                                                                                                                                                                                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run dev`   | Runs a local web server for development and opens the browser to display it. Automatically compiles styles and scripts whenever a file in `src/` is changed, and live reloads the browser. This is what _must be run_ on the development stage.                                                                                                                     |
-| `npm run build` | Compiles and minifies and optimizes the files in the assets folder. The generated compiled and optimized files are located in the `dist/` folder. This is what _must be run_ before publishing the project. This is also the build command to be run by external deployment services such as Netlify. The publishable files are then located in the `dist/` folder. |
-| `npm run clean` | Deletes the current `/dist` folder and cache folders.                                                                                                                                                                                                                                                                                                               |
-| `npm run test`  | Displays a success message if everything is working as expected.                                                                                                                                                                                                                                                                                                    |
-
-## Need help? / Want to help out?
-
-Feel free to create a [new issue](https://github.com/uoc-advanced-html-css/uoc-boilerplate/issues/new/) or drop me a line at jorditarrida@uoc.edu.
-
-Are you using this Boilerplate for your projects or for educational purposes? I would love to hear about it!
-# pac1-eines-html-css-2
-# PAC1_Eines_HTML_i_CSS_II_atrullolsr
+Assignatura: Eines HTML i CSS II (UOC)
