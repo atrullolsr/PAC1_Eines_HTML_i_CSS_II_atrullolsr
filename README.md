@@ -8,8 +8,8 @@ Realitzat per a l'assignatura d'**Eines HTML i CSS II** del Grau de Disseny i De
 
 ## Enllaços del Projecte
 
-- **URL de producció (Netlify):** [https://ruta-garrigues-albert.netlify.app](https://ruta-garrigues-albert.netlify.app)
-- **Repositori a GitHub:** [https://github.com/atrullolsr/pac1-eines-html-css-2](https://github.com/atrullolsr/pac1-eines-html-css-2)
+- **URL de producció (Netlify):** [https://ruta-garrigues.netlify.app](https://ruta-garrigues.netlify.app)
+- **Repositori a GitHub:** [https://github.com/atrullolsr/PAC1_Eines_HTML_i_CSS_II_atrullolsr](https://github.com/atrullolsr/PAC1_Eines_HTML_i_CSS_II_atrullolsr)
 
 ---
 
