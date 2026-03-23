@@ -82,7 +82,7 @@ function initMap() {
     lineOptions: {
       styles: [
         { color: 'var(--white-color)', weight: 8, opacity: 0.8 },
-        { color: 'var(--primary-color)', weight: 6, opacity: 0.6 }
+        { color: 'var(--recomendations-color)', weight: 6, opacity: 0.6 }
       ]
     },
     createMarker: () => null,
@@ -95,7 +95,7 @@ function initMap() {
       // Fem servir el paràmetre 'color' directament a l'estil inline
       html: `<i class="${iconClass}" style="font-size: 18px; color: ${color};"></i>`,
       className: 'custom-leaflet-icon',
-      iconSize: [30, 30],
+      iconSize: [40, 40],
       iconAnchor: [10, 10],
       popupAnchor: [0, -10]
     });
@@ -156,11 +156,11 @@ function initMap() {
   const altresPobles = [
     { nom: "El Cogul", coords: [41.4669, 0.6889], icon: 'fa-solid fa-palette', desc: "Pintures rupestres de la Roca dels Moros, Patrimoni Mundial per la UNESCO." },
     { nom: "La Granadella", coords: [41.3562, 0.6657], icon: 'fa-solid fa-droplet', desc: "Conegut com el mirador de les Garrigues i la Catedral de l'Oli." },
-    { nom: "L'Espluga Calba", coords: [41.4856, 1.0039], icon: 'fa-solid fa-chess-rook', desc: "Destaca el seu castell que va pertànyer a l'Orde de Malta." }
+    { nom: "L'Espluga Calba", coords: [41.4950, 1.0035], icon: 'fa-solid fa-chess-rook', desc: "Destaca el seu castell que va pertànyer a l'Orde de Malta." }
   ].forEach(c => {
     // Fem servir un color lila o blau per diferenciar-los de la ruta principal
     L.marker(c.coords, {
-      icon: createCustomIcon(c.icon, 'var(--recomendations-color)') // Un color lila elegant
+      icon: createCustomIcon(c.icon, 'var(--primary-color)') // Un color lila elegant
     })
       .addTo(map)
       .bindPopup(`
