@@ -93,25 +93,30 @@ function initMap() {
   const createCustomIcon = (iconClass, color) => {
     return L.divIcon({
       // Fem servir el paràmetre 'color' directament a l'estil inline
-      html: `<i class="${iconClass}" style="font-size: 18px; color: ${color};"></i>`,
+      html: `<i class="${iconClass}" style="font-size: 20px; color: ${color};"></i>`,
       className: 'custom-leaflet-icon',
-      iconSize: [40, 40],
+      iconSize: [50, 50],
       iconAnchor: [10, 10],
       popupAnchor: [0, -10]
     });
   };
 
-  // 1. MARCADORS DELS POBLES (Icones igual que al HTML)
+  // 1. MARCADORS DELS POBLES (Dades reals de les Garrigues)
   const pobles = [
-    { coords: [41.5187, 0.8681], poble: "Les Borges Blanques", icon: 'fa-solid fa-seedling' },
-    { coords: [41.4235, 0.9373], poble: "L'Albi", icon: 'fa-solid fa-archway' },
-    { coords: [41.4691, 0.9754], poble: "Vinaixa", icon: 'fa-solid fa-mound' },
-    { coords: [41.5113, 0.9208], poble: "La Floresta", icon: 'fa-solid fa-chess-rook' },
-    { coords: [41.5411, 0.9234], poble: "Arbeca", icon: 'fa-solid fa-gopuram' },
+    { nom: "Les Borges Blanques", coords: [41.5187, 0.8681], icon: 'fa-solid fa-seedling', desc: "Capital de la comarca i centre mundial de l'Oli d'Oliva Verge Extra." },
+    { nom: "L'Albi", coords: [41.4235, 0.9373], icon: 'fa-solid fa-archway', desc: "Vila amb un nucli antic d'origen medieval i les restes d'un castell del s. XII." },
+    { nom: "Vinaixa", coords: [41.4291, 0.9754], icon: 'fa-solid fa-hill-rockslide', desc: "Famosa per la seva pedra de qualitat i l'església de Sant Joan Baptista." },
+    { nom: "La Floresta", coords: [41.5113, 0.9208], icon: 'fa-solid fa-chess-rook', desc: "Destaca pel seu castell gòtic-renaixentista i l'antiga destil·leria." },
+    { nom: "Arbeca", coords: [41.5411, 0.9234], icon: 'fa-solid fa-gopuram', desc: "Bressol de l'oliva arbequina i seu del potentat castell dels Ducs de Cardona." }
   ].forEach(c => {
     L.marker(c.coords, { icon: createCustomIcon(c.icon, 'var(--primary-color)') })
       .addTo(map)
-      .bindPopup(`<div style="font-family: sans-serif; text-align: center;"><strong>${c.poble}</strong></div>`);
+      .bindPopup(`
+        <div style="font-family: sans-serif;">
+          <strong style="color: var(--primary-color);">${c.nom}</strong><br>
+          <hr style="margin: 5px 0">
+          ${c.desc}
+        </div>`);
   });
 
   // 2. MARCADORS DELS POIs (Punts d'interès específics)
@@ -123,11 +128,12 @@ function initMap() {
     L.marker(c.coords, { icon: createCustomIcon(c.icon, 'var(--accent-color)') })
       .addTo(map)
       .bindPopup(`
-      <div style="font-family: sans-serif;">
-        <strong style="color: var(--primary-color);">${c.nom}</strong><br>
-        <small>${c.poble}</small><hr style="margin: 5px 0;">
-        ${c.desc}
-      </div>`);
+        <div style="font-family: sans-serif;">
+          <strong style="color: var(--accent-color);">${c.nom}</strong><br>
+          <small>${c.poble}</small>
+          <hr style="margin: 5px 0;">
+          ${c.desc}
+        </div>`);
   });
 
   // 3. MARCADORS DE LES CABANES (Pedra Seca)
@@ -145,11 +151,12 @@ function initMap() {
     L.marker(c.coords, { icon: createCustomIcon('fa-solid fa-house-chimney', 'var(--secondary-color)') })
       .addTo(map)
       .bindPopup(`
-      <div style="font-family: sans-serif;">
-        <strong style="color: var(--primary-color);">${c.nom}</strong><br>
-        <small>${c.poble}</small><hr style="margin: 5px 0;">
-        ${c.desc}
-      </div>`);
+        <div style="font-family: sans-serif;">
+          <strong style="color: var(--secondary-color);">${c.nom}</strong><br>
+          <small>${c.poble}</small>
+          <hr style="margin: 5px 0;">
+          ${c.desc}
+        </div>`);
   });
 
   // 4. MARCADORS D'ALTRES POBLES (Visites recomanades)
@@ -164,11 +171,12 @@ function initMap() {
     })
       .addTo(map)
       .bindPopup(`
-      <div style="font-family: sans-serif;">
-        <strong style="color: #673ab7;">${c.nom}</strong><br>
-        <small>Visita recomanada</small><hr style="margin: 5px 0;">
-        ${c.desc}
-      </div>`);
+        <div style="font-family: sans-serif;">
+          <strong style="color: var(--primary-color);">${c.nom}</strong><br>
+          <small>Visita recomanada</small>
+          <hr style="margin: 5px 0;">
+          ${c.desc}
+        </div>`);
   });
 
   setTimeout(() => { map.invalidateSize(); }, 200);

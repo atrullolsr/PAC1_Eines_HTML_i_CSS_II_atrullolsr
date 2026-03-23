@@ -454,9 +454,9 @@ section[id] {
 .footer {
   background-color: variables.$color-secondary; // El color fosc del menú
   color: variables.$color-light;
-  margin-top: functions.espai(4);
   border-top: 4px solid variables.$color-primary; // El verd de les Borges/Arbeca
   text-align: center;
+  padding: functions.espai(1);
 
   &__container {
     display: flex;
@@ -537,13 +537,17 @@ section[id] {
     }
   }
 
-.hero {
-  padding: 3rem 0; // Un pèl més d'aire en web, però segueix sent molt baix
-
-  &__headline br {
-    display: block; // En web podem permetre el salt de línia si vols
+  main {
+    padding: 2rem 3rem;
   }
-}
+
+  .hero {
+    padding: functions.espai(3) 0; // Un pèl més d'aire en web, però segueix sent molt baix
+
+    &__headline br {
+      display: block; // En web podem permetre el salt de línia si vols
+    }
+  }
 
   .poi-grid {
     display: grid;
