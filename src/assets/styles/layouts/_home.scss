@@ -37,7 +37,6 @@ body {
     justify-content: space-between;
     align-items: center; // <--- Alinea el logo i el menú verticalment
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     position: relative;
   }
@@ -199,13 +198,11 @@ main {
     // El teu contenidor de l'HTML
     position: relative;
     z-index: 2;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 functions.espai(1.5);
   }
 
   &__content {
-    max-width: 750px; // Una mica més ample per no fer-lo tan alt
     color: variables.$color-white;
   }
 
@@ -248,7 +245,6 @@ main {
     line-height: 1.4;
     color: variables.$color-light;
     margin: 0;
-    max-width: 600px;
     opacity: 0.9;
   }
 }
@@ -349,6 +345,7 @@ section[id] {
 
 .altres-pobles {
   background-color: variables.$color-white;
+  border: 4px solid variables.$color-primary;
   border-radius: 0.8rem;
   padding: 1rem;
 
@@ -462,7 +459,6 @@ section[id] {
   text-align: center;
 
   &__container {
-    // El teu mixin o classe container ja hauria de tenir el max-width i el margin auto
     display: flex;
     justify-content: center;
     align-items: center;
