@@ -173,8 +173,7 @@ main {
   padding: functions.espai(1);
 }
 
-
-// Hero
+// Bloc: Hero
 .hero {
   position: relative;
   width: 100%;
@@ -189,7 +188,6 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    // Gradient més fosc i directe per llegir bé en poc espai
     background: linear-gradient(to right,
         rgba(variables.$color-secondary, 0.9) 0%,
         rgba(variables.$color-secondary, 0.6) 100%);
@@ -222,7 +220,6 @@ main {
   }
 
   &__headline {
-    // Reduïm la mida màxima del títol (el 3.5rem del clamp)
     font-size: clamp(1.8rem, 5vw, 2.8rem);
     line-height: 1;
     margin: 0;
