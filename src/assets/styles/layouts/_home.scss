@@ -10,11 +10,10 @@
   --map-poi-color: #{variables.$color-map-poi};
 }
 
-
 // Estils globals
 body {
   font-family: variables.$font-main;
-  background-color: variables.$color-light; // Crema suau per a tot el fons
+  background-color: variables.$color-light;
   color: variables.$color-dark;
   margin: 0;
   line-height: 1.6;
@@ -34,10 +33,10 @@ body {
   align-items: center;
 
   &__container {
-    display: flex; // <--- Activa el mode fila
-    flex-direction: row; // <--- Força la fila
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center; // <--- Alinea el logo i el menú verticalment
+    align-items: center; // Alinea el logo i el menú verticalment
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -52,13 +51,13 @@ body {
   &__title {
     font-size: 1.3rem;
     color: variables.$color-secondary;
-    margin: 0; // <--- Important: treu el marge per defecte
+    margin: 0;
     padding: 0;
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
-    white-space: nowrap; // <--- Evita que el text es trenqui en dues línies
+    white-space: nowrap;
 
     &--highlight {
       color: variables.$color-primary;
@@ -74,10 +73,10 @@ body {
 // Navegació
 .nav {
   &__toggle {
-    position: fixed; // Es queda clavat a sobre del header blanc
-    top: 7px; // Centrat verticalment (Header 60px - Botó ~45px)
+    position: fixed; // Es queda clavat a sobre del header
+    top: 7px;
     right: 1rem;
-    z-index: 1100; // Per sobre del header (1000)
+    z-index: 1100;
     background: none;
     border: none;
     cursor: pointer;
@@ -128,7 +127,7 @@ body {
     border-radius: 0 0 0 1rem;
 
     &--open {
-      right: 0; // Entra el desplegable
+      right: 0;
     }
   }
 
@@ -148,7 +147,6 @@ body {
     }
   }
 
-  // Estat ACTIU de l'hamburguesa (Quan es clica)
   &--active {
     .nav__icon {
       background: transparent !important;
@@ -232,7 +230,7 @@ main {
     width: 50px;
     height: 3px;
     background-color: variables.$color-primary;
-    margin: 0.8rem 0; // Molt poc marge vertical
+    margin: 0.8rem 0;
   }
 
   &__text {
@@ -252,7 +250,6 @@ section[id] {
 // --- SECCIONS DE CONTINGUT (Pobles, Mapa, Altres) ---
 .town-section,
 .map-section {
-  // Agrupem els títols que es comporten igual
   &__name,
   &__title {
     display: flex;
@@ -275,7 +272,7 @@ section[id] {
 .poi-card {
   background-color: variables.$color-white;
   border: 1px solid clarificar(variables.$color-secondary, 20);
-  border-left: 6px solid variables.$color-primary; // Accent verd oliva
+  border-left: 6px solid variables.$color-primary;
   margin-bottom: functions.espai(2);
   border-radius: functions.espai(1);
   display: flex;
@@ -299,8 +296,8 @@ section[id] {
     margin-bottom: functions.espai(1);
 
     i {
-      font-size: 1.2rem; // Una mica més gran per estil
-      opacity: 0.9; // Perquè no "pessi" tant visualment com el text
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
   }
 
@@ -329,25 +326,25 @@ section[id] {
 }
 
 // --- PROPIETATS ESTRUCTURALS COMUNES (Mides i Espais) ---
-// --- 1. ESTRUCTURA COMUNA (3 elements en fila) ---
+// --- 1. ESTRUCTURA COMUNA ---
 .oil-divider,
 .altres-pobles {
   border-radius: 1rem;
-  padding: functions.espai(1); // Una mica més de marge lateral
+  padding: functions.espai(1);
   text-align: center;
 
   .oil-divider__icon,
   .pobles-destacats {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center; // Centra el tercer element a baix
+    justify-content: center;
     gap: 1.5rem;
 
     // Aquí està la clau:
     &>span,
     &>.poble-mini {
       flex: 0 1 40%;
-      min-width: 120px; // Evita que es facin massa petits
+      min-width: 120px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -356,7 +353,7 @@ section[id] {
   }
 }
 
-// --- 2. PERSONALITZACIÓ OIL-DIVIDER (Icona a dalt del text) ---
+// --- 2. PERSONALITZACIÓ OIL-DIVIDER ---
 .oil-divider {
   background-color: variables.$color-primary;
   color: variables.$color-white;
@@ -389,16 +386,16 @@ section[id] {
   }
 }
 
-// --- 3. PERSONALITZACIÓ ALTRE POBLES (Icona a dalt del text) ---
+// --- 3. PERSONALITZACIÓ ALTRE POBLES ---
 .altres-pobles {
   background-color: variables.$color-white;
   border: 4px solid variables.$color-primary;
 
   .poble-mini {
     display: flex;
-    flex-direction: column; // <--- Icona a DALT del text (igual que l'oli)
+    flex-direction: column;
     align-items: center;
-    flex: 1; // Reparteix l'espai (33% cada un)
+    flex: 1; // Reparteix l'espai
     gap: 8px;
 
     &__icon {
@@ -415,11 +412,11 @@ section[id] {
     }
 
     &__info {
-      text-align: center; // Text centrat sota la icona
+      text-align: center;
 
       strong {
         display: block;
-        font-size: 1rem; // Mida ajustada per a mòbil
+        font-size: 1rem;
         color: variables.$color-dark;
         line-height: 1, 1;
       }
@@ -437,9 +434,7 @@ section[id] {
     border-radius: 1rem;
     border: 2px solid rgba(variables.$color-secondary, 0.3);
     box-shadow: 0 10px 30px rgba(variables.$color-dark, 0.1);
-    z-index: 1; // Per sota de possibles menús desplegables
-
-    // Evitem que el mapa es desbordi en mòbils petits
+    z-index: 1;
     max-width: 100%;
   }
 }
@@ -454,7 +449,7 @@ section[id] {
 }
 
 .footer {
-  background-color: variables.$color-secondary; // Canviem a fons fosc per "tancar" la pàgina
+  background-color: variables.$color-secondary;
   color: variables.$color-light; // Text crema suau per no enlluernar
   border-top: 4px solid variables.$color-primary; // El verd oliva que connecta amb la ruta
   text-align: center;
@@ -462,7 +457,7 @@ section[id] {
 
   &__container {
     display: flex;
-    flex-direction: column; // En vertical queda més net per a crèdits
+    flex-direction: column;
     gap: 1rem;
     align-items: center;
   }
@@ -471,7 +466,7 @@ section[id] {
     p {
       margin: 0.3rem 0;
       font-size: 0.85rem;
-      opacity: 0.7; // El copyright i el curs es veuen però no criden l'atenció
+      opacity: 0.7;
       letter-spacing: 0.5px;
     }
   }
@@ -481,7 +476,7 @@ section[id] {
     font-weight: 400;
 
     span {
-      color: variables.$color-accent; // El teu nom en groc/accent: destaca perfectament sobre el fosc
+      color: variables.$color-accent;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -494,9 +489,9 @@ section[id] {
   .header {
     &__container {
       display: flex;
-      justify-content: space-between; // Separa Logo de Menú
-      align-items: center; // Alineació vertical perfecta
-      height: 100%; // Ocupa tota l'alçada del header (70px)
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
       margin: 0 auto;
     }
   }
@@ -504,7 +499,7 @@ section[id] {
   .nav {
     position: fixed; // Es clava a sobre del header sticky
     top: 0;
-    right: 2rem; // Alineat a la dreta
+    right: 2rem;
     height: 60px; // Mateixa alçada que el header
     display: flex;
     align-items: center;
@@ -515,11 +510,11 @@ section[id] {
     }
 
     &__list {
-      position: static; // Torna al flux horitzontal
+      position: static;
       width: auto;
       height: auto;
       background: transparent;
-      flex-direction: row; // Una sola línia
+      flex-direction: row;
       box-shadow: none;
       visibility: visible;
       opacity: 1;
@@ -527,14 +522,14 @@ section[id] {
     }
 
     &__link {
-      color: variables.$color-secondary; // Text fosc pel header blanc
+      color: variables.$color-secondary;
       border: none;
       padding: 0.5rem 1rem;
       font-size: 0.85rem;
 
       &:hover {
         background: transparent;
-        padding-left: 1rem; // Resetejem el moviment lateral
+        padding-left: 1rem;
         box-shadow: inset 0 -2px 0 variables.$color-primary;
         color: variables.$color-primary;
       }
@@ -546,10 +541,10 @@ section[id] {
   }
 
   .hero {
-    padding: functions.espai(3) 0; // Un pèl més d'aire en web, però segueix sent molt baix
+    padding: functions.espai(3) 0;
 
     &__headline br {
-      display: block; // En web podem permetre el salt de línia si vols
+      display: block;
     }
   }
 
@@ -568,8 +563,8 @@ section[id] {
   .altres-pobles {
     .oil-divider__icon,
     .pobles-destacats {
-      flex-wrap: nowrap; // <--- En web, prohibim que baixin: fila única
-      gap: 4rem; // Més espai entre ells
+      flex-wrap: nowrap;
+      gap: 4rem;
 
       &>span,
       &>.poble-mini {
