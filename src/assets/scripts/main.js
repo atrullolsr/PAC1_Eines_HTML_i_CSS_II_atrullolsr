@@ -82,7 +82,7 @@ function initMap() {
     lineOptions: {
       styles: [
         { color: 'var(--white-color)', weight: 8, opacity: 0.8 },
-        { color: 'var(--recomendations-color)', weight: 6, opacity: 0.6 }
+        { color: 'var(--map-route-color)', weight: 6, opacity: 0.6 }
       ]
     },
     createMarker: () => null,
@@ -93,23 +93,26 @@ function initMap() {
   const createCustomIcon = (iconClass, color) => {
     return L.divIcon({
       // Fem servir el paràmetre 'color' directament a l'estil inline
-      html: `<i class="${iconClass}" style="font-size: 20px; color: ${color};"></i>`,
+      html: `
+      <div style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px;">
+        <i class="${iconClass}" style="font-size: 25px; color: ${color}; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));"></i>
+      </div>`,
       className: 'custom-leaflet-icon',
-      iconSize: [50, 50],
-      iconAnchor: [10, 10],
-      popupAnchor: [0, -10]
+      iconSize: [30, 30],
+      iconAnchor: [15, 30],
+      popupAnchor: [0, -30]
     });
   };
 
   // 1. MARCADORS DELS POBLES (Dades reals de les Garrigues)
   const pobles = [
-    { nom: "Les Borges Blanques", coords: [41.5187, 0.8681], icon: 'fa-solid fa-seedling', desc: "Capital de la comarca i centre mundial de l'Oli d'Oliva Verge Extra." },
-    { nom: "L'Albi", coords: [41.4235, 0.9373], icon: 'fa-solid fa-archway', desc: "Vila amb un nucli antic d'origen medieval i les restes d'un castell del s. XII." },
-    { nom: "Vinaixa", coords: [41.4291, 0.9754], icon: 'fa-solid fa-hill-rockslide', desc: "Famosa per la seva pedra de qualitat i l'església de Sant Joan Baptista." },
-    { nom: "La Floresta", coords: [41.5113, 0.9208], icon: 'fa-solid fa-chess-rook', desc: "Destaca pel seu castell gòtic-renaixentista i l'antiga destil·leria." },
-    { nom: "Arbeca", coords: [41.5411, 0.9234], icon: 'fa-solid fa-gopuram', desc: "Bressol de l'oliva arbequina i seu del potentat castell dels Ducs de Cardona." }
+    { nom: "Les Borges Blanques", coords: [41.5187, 0.8681], desc: "Capital de la comarca i centre mundial de l'Oli d'Oliva Verge Extra." },
+    { nom: "L'Albi", coords: [41.4235, 0.9373], desc: "Vila amb un nucli antic d'origen medieval i les restes d'un castell del s. XII." },
+    { nom: "Vinaixa", coords: [41.4291, 0.9754], desc: "Famosa per la seva pedra de qualitat i l'església de Sant Joan Baptista." },
+    { nom: "La Floresta", coords: [41.5113, 0.9208], desc: "Destaca pel seu castell gòtic-renaixentista i l'antiga destil·leria." },
+    { nom: "Arbeca", coords: [41.5411, 0.9234], desc: "Bressol de l'oliva arbequina i seu del potentat castell dels Ducs de Cardona." }
   ].forEach(c => {
-    L.marker(c.coords, { icon: createCustomIcon(c.icon, 'var(--primary-color)') })
+    L.marker(c.coords, { icon: createCustomIcon('fa-solid fa-location-dot', 'var(--primary-color)') })
       .addTo(map)
       .bindPopup(`
         <div style="font-family: sans-serif;">
@@ -121,9 +124,11 @@ function initMap() {
 
   // 2. MARCADORS DELS POIs (Punts d'interès específics)
   const pois = [
-    { nom: 'El Terrall', coords: [41.519, 0.867], poble: "Les Borges Blanques", icon: 'fa-solid fa-tree', desc: "Espai emblemàtic amb dos estanys que recullen l'aigua de la pluja." },
-    { nom: 'Església Santa Maria', coords: [41.5218, 0.8676], poble: "Les Borges Blanques", icon: 'fa-solid fa-church', desc: "Temple parroquial d'estil neoclàssic amb un campanar dominant." },
-    { nom: 'Vilars Arbeca', coords: [41.5688, 0.9542], poble: "Arbeca", icon: 'fa-solid fa-monument', desc: "Fortalesa de l'edat del ferro única al món ibèric." }
+    { nom: 'El Terrall', coords: [41.5193, 0.8672], poble: "Les Borges Blanques", icon: 'fa-solid fa-tree', desc: "Pulmó verd amb basses històriques i premses d'oli monumentals." },
+    { nom: "Església de l'Assumpta", coords: [41.5218, 0.8676], poble: "Les Borges Blanques", icon: 'fa-solid fa-church', desc: "Majestuosa construcció neoclàssica amb el seu emblemàtic campanar vuitavat." },
+    { nom: 'Castell de la Floresta', coords: [41.5105, 0.9213], poble: "La Floresta", icon: 'fa-solid fa-chess-rook', desc: "Antic castell-palau que conserva uns excepcionals sostres de fusta policromada." },
+    { nom: "Castell d'Arbeca", coords: [41.5418, 0.9248], poble: "Arbeca", icon: 'fa-solid fa-building-columns', desc: "Antiga residència dels Ducs de Cardona, lligada a l'origen de l'oliva arbequina." },
+    { nom: 'Vilars d’Arbeca', coords: [41.5688, 0.9542], poble: "Arbeca", icon: 'fa-solid fa-monument', desc: "Fortalesa de l'Edat del Ferro única a Europa pel seu sistema defensiu i fossat." }
   ].forEach(c => {
     L.marker(c.coords, { icon: createCustomIcon(c.icon, 'var(--accent-color)') })
       .addTo(map)
@@ -167,12 +172,12 @@ function initMap() {
   ].forEach(c => {
     // Fem servir un color lila o blau per diferenciar-los de la ruta principal
     L.marker(c.coords, {
-      icon: createCustomIcon(c.icon, 'var(--primary-color)') // Un color lila elegant
+      icon: createCustomIcon(c.icon, 'var(--map-poi-color)') // Un color lila elegant
     })
       .addTo(map)
       .bindPopup(`
         <div style="font-family: sans-serif;">
-          <strong style="color: var(--primary-color);">${c.nom}</strong><br>
+          <strong style="color: var(--map-poi-color);">${c.nom}</strong><br>
           <small>Visita recomanada</small>
           <hr style="margin: 5px 0;">
           ${c.desc}
