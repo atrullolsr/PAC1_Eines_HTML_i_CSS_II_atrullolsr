@@ -6,7 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 import L, { icon } from 'leaflet';
-import 'leaflet-routing-machine';git sat
+import 'leaflet-routing-machine';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
