@@ -13,6 +13,7 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 /**
  * Lògica de l'aplicació
  */
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Hello, UOC!");
 
@@ -36,7 +37,6 @@ function initMobileMenu() {
     navList.classList.toggle('nav__list--open');
     navToggle.classList.toggle('nav--active');
 
-    // Opcional: Evitar que el fons es mogui quan el menú està obert
     document.body.style.overflow = navList.classList.contains('nav__list--open') ? 'hidden' : '';
   });
 
@@ -45,20 +45,29 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       navList.classList.remove('nav__list--open');
       navToggle.classList.remove('nav--active');
-      document.body.style.overflow = ''; // Restablir el scroll
+      document.body.style.overflow = '';
     });
   });
 }
+
+/**
+ * Cofiguració el lightbox per les imatges de la galeria
+ */
 
 function initLightbox() {
   GLightbox({
     selector: '.glightbox',
     width: '500px',    // Amplada forçada
-    height: 'auto',    // Alçada automàtica per no deformar
+    height: 'auto',
     zoomable: true,
     draggable: true
   });
 }
+
+/**
+ * Configuració del mapa amb Leaflet i Leaflet Routing Machine
+ */
+
 function initMap() {
   const mapContainer = document.getElementById('map');
   if (!mapContainer) return;
@@ -151,8 +160,6 @@ function initMap() {
     { nom: "Aljub d'Isidre Mas", coords: [41.4561, 0.9652], poble: "Vinaixa", desc: "Aljub cavat a la roca per recollir aigua de pluja." },
     { nom: "Cabana de Víctor Guasch", coords: [41.4571, 0.9668], poble: "Vinaixa", desc: "Utilitzada per picapedrers, amb taula i pica de pedra." },
   ].forEach(c => {
-    // Hem canviat 'fas fa-house-chimney' per una icona que recordi més a pedra/construcció si vols,
-    // però 'fa-house-chimney' és la que millor representa una cabana petita.
     L.marker(c.coords, { icon: createCustomIcon('fa-solid fa-house-chimney', 'var(--secondary-color)') })
       .addTo(map)
       .bindPopup(`
@@ -170,9 +177,8 @@ function initMap() {
     { nom: "La Granadella", coords: [41.3562, 0.6657], icon: 'fa-solid fa-droplet', desc: "Conegut com el mirador de les Garrigues i la Catedral de l'Oli." },
     { nom: "L'Espluga Calba", coords: [41.4950, 1.0035], icon: 'fa-solid fa-chess-rook', desc: "Destaca el seu castell que va pertànyer a l'Orde de Malta." }
   ].forEach(c => {
-    // Fem servir un color lila o blau per diferenciar-los de la ruta principal
     L.marker(c.coords, {
-      icon: createCustomIcon(c.icon, 'var(--map-poi-color)') // Un color lila elegant
+      icon: createCustomIcon(c.icon, 'var(--map-poi-color)') // Un color lila per  diferenciar-los de la ruta principal
     })
       .addTo(map)
       .bindPopup(`

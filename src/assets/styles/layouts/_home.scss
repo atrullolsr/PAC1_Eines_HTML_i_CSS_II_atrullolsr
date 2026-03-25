@@ -19,7 +19,7 @@ body {
   line-height: 1.6;
 }
 
-// Bloc: Header
+// BLOC: Header
 .header {
   position: sticky;
   top: 0;
@@ -70,7 +70,7 @@ body {
   }
 }
 
-// Navegació
+// BLOC: Navegació
 .nav {
   &__toggle {
     position: fixed; // Es queda clavat a sobre del header
@@ -170,7 +170,7 @@ main {
   padding: functions.espai(1);
 }
 
-// Bloc: Hero
+// BLOC: Hero
 .hero {
   position: relative;
   width: 100%;
@@ -247,7 +247,7 @@ section[id] {
   scroll-margin-top: 80px; // 65px del header + 15px de marge de cortesia
 }
 
-// --- SECCIONS DE CONTINGUT (Pobles, Mapa, Altres) ---
+// --- BLOC DE SECCIONS DE CONTINGUT (Pobles, Mapa, Altres) ---
 .town-section,
 .map-section {
   &__name,
@@ -268,7 +268,7 @@ section[id] {
   }
 }
 
-// Bloc: POI Card
+// BLOC: POI Card
 .poi-card {
   background-color: variables.$color-white;
   border: 1px solid clarificar(variables.$color-secondary, 20);
@@ -325,8 +325,7 @@ section[id] {
   }
 }
 
-// --- PROPIETATS ESTRUCTURALS COMUNES (Mides i Espais) ---
-// --- 1. ESTRUCTURA COMUNA ---
+// --- BLOC: 1. PROPIETATS ESTRUCTURALS COMUNES (Mides i Espais) ---
 .oil-divider,
 .altres-pobles {
   border-radius: 1rem;
@@ -424,6 +423,8 @@ section[id] {
   }
 }
 
+ // BLOC: Mapa
+
 .map-section {
   &__canvas {
     display: block;
@@ -447,6 +448,8 @@ section[id] {
   justify-content: center;
   align-items: center;
 }
+
+// BLOC: Footer
 
 .footer {
   background-color: variables.$color-secondary;
@@ -497,7 +500,7 @@ section[id] {
   }
 
   .nav {
-    position: fixed; // Es clava a sobre del header sticky
+    position: fixed; // Es coloca a sobre del header sticky
     top: 0;
     right: 2rem;
     height: 60px; // Mateixa alçada que el header
@@ -506,7 +509,7 @@ section[id] {
     z-index: 1001;
 
     &__toggle {
-      display: none; // Fora hamburguesa en web
+      display: none; // Elimina el menú hamburguesa en web
     }
 
     &__list {

@@ -1,12 +1,11 @@
 @use "sass:color";
 
 // Funció pròpia per calcular espaiats basats en un rem base
-// Així mantens la coherència visual a tota la ruta
 @function espai($multiplicador) {
   @return $multiplicador * 1rem;
 }
 
-// --- FUNCIÓ PRÒPIA (Requisit PAC) ---
+// Fucnió pròpia fer mes clar el color desitjat
 @function clarificar($color, $percentatge) {
   @return color.mix(#fff, $color, $percentatge);
 }
