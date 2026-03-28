@@ -6,6 +6,7 @@
   "scripts": {
     "parcel:serve": "parcel -p 8123 --target web",
     "parcel:build": "parcel build --target web --no-source-maps --no-cache",
+    "lint": "stylelint \"src/assets/styles/**/*.scss\"",
     "clean": "rimraf dist .cache .cache-loader .parcel-cache",
     "dev": "npm-run-all clean parcel:serve",
     "build": "npm-run-all clean parcel:build",
