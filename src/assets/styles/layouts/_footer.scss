@@ -1,0 +1,39 @@
+@use "../abstracts/functions" as functions;
+@use '../variables' as variables;
+
+// BLOC: Footer
+.footer {
+  background-color: variables.$color-secondary;
+  color: variables.$color-light; // Text crema suau per no enlluernar
+  border-top: 4px solid variables.$color-primary; // El verd oliva que connecta amb la ruta
+  text-align: center;
+  padding: functions.espai(2) 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__bottom {
+    p {
+      margin: 0.3rem 0;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__author {
+    font-size: 0.95rem;
+    font-weight: 400;
+
+    span {
+      color: variables.$color-accent;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@use "../abstracts/functions" as functions;
+@use '../variables' as variables;
+
+// BLOC: Header
+.header {
+    position: sticky;
+    top: 0;
+    background-color: variables.$color-white;
+    z-index: 1000;
+    border-bottom: 3px solid variables.$color-primary;
+    box-shadow: 0 4px 20px rgba(variables.$color-dark, 0.08);
+    padding: 0 functions.espai(1.5);
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; // Alinea el logo i el menú verticalment
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &__logo-link {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 1.3rem;
+        color: variables.$color-secondary;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        white-space: nowrap;
+
+        &--highlight {
+            color: variables.$color-primary;
+            font-weight: 900;
+
+            &::after {
+                color: variables.$color-accent;
+            }
+        }
+    }
+}
+
+// --- RESPONSIVE ---
+@media (min-width: variables.$mq-tablet) {
+  .header {
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      margin: 0 auto;
+    }
+  }
+}

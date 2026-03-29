@@ -11,13 +11,16 @@
 /**
  * Import abstracts (Variables i Funcions)
  */
-@use "variables"; // <--- FALTA AQUESTA LÍNIA!
+@use "variables";
 @use "abstracts/functions";
 
 /**
  * Import layouts
  */
+@use "layouts/header";
+@use "layouts/nav";
 @use "layouts/home";
+@use "layouts/footer";
 
 /**
  * Do NOT include anything else in this file!
